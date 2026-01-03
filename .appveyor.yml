@@ -1,6 +1,4 @@
-image: Ubuntu2004  # образ для сборки
-
-stack: jdk 11  # версия JDK
+image: Ubuntu1804  # образ для сборки
 
 branches:
   only:
@@ -8,14 +6,5 @@ branches:
 
 build: off  # будем использовать свой скрипт сборки
 
-install:
-  # запускаем SUT (& означает, что в фоновом режиме не блокируем терминал для запуска тестов)
-  - java -jar ./artifacts/app-mbank.jar &
-  - chmod +x gradlew
-
 build_script:
-  - ./gradlew test --info  # запускаем тест, флаг --info позволяет выводить больше информации
-  - # .appveyor.yml
-  # .appveyor.yml
-
-
+  - ./gradlew build
